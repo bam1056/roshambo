@@ -1,3 +1,11 @@
+h2 {
+  position: relative;
+  top: 0.5em;
+}
+.playerTitle {
+  position: relative;
+  top: 5em;
+}
 html {
   height: 100%;
 }
@@ -55,7 +63,7 @@ body {
   background-image: url('../images/paper.png')
 }
 
-.output {
+.output, .pScore, .compScore {
   margin: auto 2em;
   font-size: 1.5em;
   padding: 1em;
@@ -67,4 +75,8 @@ body {
 .test button.reset {
   font-size: 1.5em;
   background-color: gray;
+}
+.score {
+  display: flex;
+  justify-content: space-betwee
 }

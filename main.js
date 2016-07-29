@@ -7,13 +7,13 @@ const init = () => {
   const rock = document.querySelector('.rock')
   const paper = document.querySelector('.paper')
   const scissors = document.querySelector('.scissors')
-  const reset = document.querySelector('.reset')
+  // const reset = document.querySelector('.reset')
 
-  reset.addEventListener('click', () => {
-    // document.getElementById('compChoice').style.display = 'none'
-    let el = document.getElementById('compChoice')
-    el.parentNode.removeChild(el)
-  })
+  // reset.addEventListener('click', () => {
+  //   // document.getElementById('compChoice').style.display = 'none'
+  //   let el = document.getElementById('compChoice')
+  //   el.parentNode.removeChild(el)
+  // })
   rock.addEventListener('click', () => {
     playerChoice = 'Rock'
     startGame(playerChoice)
@@ -34,6 +34,7 @@ const startGame = (x) => {
   let playerWins = false
   let compWins = false
   compChoice = computerChoice(gameState)
+
   if (x === 'Rock') {
     if (compChoice === 'Rock') {}
     else if (compChoice === 'Paper') compWins = true
@@ -52,30 +53,46 @@ const startGame = (x) => {
   whoWins(compWins, playerWins)
 }
 const whoWins = (cWin, pWin) => {
-  if (cWin) document.querySelector('.output').textContent = 'Computer Wins'
-    else if (pWin) document.querySelector('.output').textContent = 'Player Wins'
-    else document.querySelector('.output').textContent = 'Its a Draw!'
+  if (cWin) {
+    document.querySelector('.output').textContent = 'Computer Wins'
+    document.querySelector('.compScore').textContent = 'Comp Score = 1'
+  } else if (pWin) {
+    document.querySelector('.output').textContent = 'Player Wins'
+    document.querySelector('.pScore').textContent = 'Player Score = 1'
+  } else document.querySelector('.output').textContent = 'Its a Draw!'
 }
 
 const computerChoice = (n) => {
   let choice = n[Math.floor(Math.random() * n.length)]
   if (choice === 'Rock') {
-    document.getElementById('compChoice').style.display = 'flex'
+    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/rock.png'
     let src = document.getElementById('compChoice')
+    let existingChild = src.lastChild
+    if (existingChild) {
+      src.removeChild(existingChild)
+    }
     src.appendChild(img)
   } else if (choice === 'Paper') {
-    document.getElementById('compChoice').style.display = 'flex'
+    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/paper.png'
     let src = document.getElementById('compChoice')
+    let existingChild = src.lastChild
+    if (existingChild) {
+      src.removeChild(existingChild)
+    }
     src.appendChild(img)
   } else {
-    document.getElementById('compChoice').style.display = 'flex'
+    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/scissors.png'
     let src = document.getElementById('compChoice')
+    let existingChild = src.lastChild
+    if (existingChild) {
+      src.removeChild(existingChild)
+    }
     src.appendChild(img)
   }
   return choice
