@@ -1,37 +1,49 @@
+let totalComputerScore = 0
+let totalPlayerScore = 0
+
 const init = () => {
   document.querySelector('.output').textContent = 'Let\'s Play!'
   const rock = document.querySelector('.rock')
   const paper = document.querySelector('.paper')
   const scissors = document.querySelector('.scissors')
+  const reset = document.querySelector('.reset')
 
   rock.addEventListener('click', () => {
     let result = playGame('Rock')
+    score(result)
     displayResults(result)
   })
   paper.addEventListener('click', () => {
     let result = playGame('Paper')
+    score(result)
     displayResults(result)
   })
   scissors.addEventListener('click', () => {
     let result = playGame('Scissors')
+    score(result)
     displayResults(result)
+  })
+  reset.addEventListener('click', () => {
+    totalComputerScore = 0
+    totalPlayerScore = 0
+    displayResults()
   })
 }
 
 document.addEventListener('DOMContentLoaded', init)
-
+const score = (result) => {
+  switch (result) {
+    case 'computer': totalComputerScore++
+      break
+    case 'player': totalPlayerScore++
+      break
+    case 'tie': break
+    default: return null
+  }
+}
 const playGame = (playerChoice) => {
   let compChoice = computerChoice()
 
-//   switch ([compChoice, playerChoice]) {
-//     case ['Rock', 'Paper'] || ['Paper', 'Scissors'] || ['Scissors', 'Rock']:
-//       return 'player'
-//     case ['Rock', 'Scissors'] || ['Paper', 'Rock'] || ['Scissors', 'Paper']:
-//       return 'computer'
-//     default: return 'tie'
-//   }
-//   return null
-// }
   switch (playerChoice) {
     case 'Rock':
       switch (compChoice) {
@@ -43,7 +55,8 @@ const playGame = (playerChoice) => {
           return 'player'
         default: return null
       }
-    case 'Paper': 
+      break
+    case 'Paper':
       switch (compChoice) {
         case 'Rock':
           return 'player'
@@ -53,6 +66,7 @@ const playGame = (playerChoice) => {
           return 'computer'
         default: return null
       }
+      break
     case 'Scissors':
       switch (compChoice) {
         case 'Rock':
@@ -63,49 +77,38 @@ const playGame = (playerChoice) => {
           return 'tie'
         default: return null
       }
+      break
   }
-  // if (playerChoice === 'Paper') {
-  //   if (compChoice === 'Paper') {
-  //     return 'tie'
-  //   } else if (compChoice === 'Rock') {
-  //     return 'player'
-  //   } else {
-  //     return 'computer'
-  //   }
-  // }
-  // if (playerChoice === 'Scissors') {
-  //   if (compChoice === 'Scissors') {
-  //     return 'tie'
-  //   } else if (compChoice === 'Paper') {
-  //     return 'play'
-  //   } else {
-  //     return 'computer'
-  //   }
-  // }
-  return null
 }
 
 const displayResults = (result) => {
-  if (result === 'computer') {
-    let computerScore = 100
-    document.querySelector('.output').textContent = 'Computer Wins'
-    document.querySelector('.compScore').textContent = `Comp Score = ${computerScore}`
-  } else if (result === 'player') {
-    document.querySelector('.output').textContent = 'Player Wins'
-    document.querySelector('.pScore').textContent = 'Player Score = 1'
-  } else if (result === 'tie') {
-    document.querySelector('.output').textContent = 'Its a Draw!'
-  } else {
-    document.querySelector('.output').textContent = 'Who knows (error)?'
+  switch (result) {
+    case 'computer':
+      document.querySelector('.output').textContent = 'Computer Wins'
+      document.querySelector('.compScore').textContent = `Comp Score = ${totalComputerScore}`
+      break
+    case 'player':
+      document.querySelector('.output').textContent = 'Player Wins'
+      document.querySelector('.pScore').textContent = `Player Score = ${totalPlayerScore}`
+      break
+    case 'tie':
+      document.querySelector('.output').textContent = 'Its a Draw!'
+      break
+    default:
+      document.querySelector('.compScore').textContent = `Comp Score = ${totalComputerScore}`
+      document.querySelector('.pScore').textContent = `Player Score = ${totalPlayerScore}`
+      let src = document.getElementById('compChoice')
+      let existingChild = src.lastChild
+      if (existingChild) {
+        src.removeChild(existingChild)
+      }
   }
 }
-
 const computerChoice = () => {
   const gameState = ['Rock', 'Paper', 'Scissors']
 
   let choice = gameState[Math.floor(Math.random() * gameState.length)]
   if (choice === 'Rock') {
-    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/rock.png'
     let src = document.getElementById('compChoice')
@@ -115,7 +118,6 @@ const computerChoice = () => {
     }
     src.appendChild(img)
   } else if (choice === 'Paper') {
-    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/paper.png'
     let src = document.getElementById('compChoice')
@@ -125,7 +127,6 @@ const computerChoice = () => {
     }
     src.appendChild(img)
   } else {
-    // document.getElementById('compChoice').style.display = 'flex'
     let img = document.createElement('img')
     img.src = '/images/scissors.png'
     let src = document.getElementById('compChoice')
