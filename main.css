@@ -18,6 +18,20 @@ body {
   justify-content: space-around;
 }
 
+/*.compChoice {
+  display: flex;
+  justify-content: space-around;
+}
+.compChoice button {
+  margin: 2em;
+  color: transparent;
+  background-color: rgb(136, 187, 190);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 150px;
+  width: 150px;
+}*/
 .input button {
   margin: 2em;
   color: transparent;
@@ -27,7 +41,6 @@ body {
   background-size: contain;
   height: 150px;
   width: 150px;
-
 }
 
 .input button.rock {
@@ -49,4 +62,9 @@ body {
   border-radius: 5px;
   border: 2px solid rgb(41, 109, 128);
   background-color: rgb(75, 200, 235);
+}
+
+.test button.reset {
+  font-size: 1.5em;
+  background-color: gray;
 }

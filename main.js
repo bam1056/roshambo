@@ -7,7 +7,13 @@ const init = () => {
   const rock = document.querySelector('.rock')
   const paper = document.querySelector('.paper')
   const scissors = document.querySelector('.scissors')
+  const reset = document.querySelector('.reset')
 
+  reset.addEventListener('click', () => {
+    // document.getElementById('compChoice').style.display = 'none'
+    let el = document.getElementById('compChoice')
+    el.parentNode.removeChild(el)
+  })
   rock.addEventListener('click', () => {
     playerChoice = 'Rock'
     startGame(playerChoice)
@@ -43,12 +49,34 @@ const startGame = (x) => {
     else if (compChoice === 'Paper') playerWins = true
     else compWins = true
   }
-  if (compWins) console.log('Computer wins')
-    else if (playerWins) console.log('Player wins')
-    else console.log('No-one wins')
+  whoWins(compWins, playerWins)
+}
+const whoWins = (cWin, pWin) => {
+  if (cWin) document.querySelector('.output').textContent = 'Computer Wins'
+    else if (pWin) document.querySelector('.output').textContent = 'Player Wins'
+    else document.querySelector('.output').textContent = 'Its a Draw!'
 }
 
 const computerChoice = (n) => {
   let choice = n[Math.floor(Math.random() * n.length)]
+  if (choice === 'Rock') {
+    document.getElementById('compChoice').style.display = 'flex'
+    let img = document.createElement('img')
+    img.src = '/images/rock.png'
+    let src = document.getElementById('compChoice')
+    src.appendChild(img)
+  } else if (choice === 'Paper') {
+    document.getElementById('compChoice').style.display = 'flex'
+    let img = document.createElement('img')
+    img.src = '/images/paper.png'
+    let src = document.getElementById('compChoice')
+    src.appendChild(img)
+  } else {
+    document.getElementById('compChoice').style.display = 'flex'
+    let img = document.createElement('img')
+    img.src = '/images/scissors.png'
+    let src = document.getElementById('compChoice')
+    src.appendChild(img)
+  }
   return choice
 }
