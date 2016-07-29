@@ -4,7 +4,7 @@ h2 {
 }
 .playerTitle {
   position: relative;
-  top: 5em;
+  bottom: 5em;
 }
 html {
   height: 100%;
