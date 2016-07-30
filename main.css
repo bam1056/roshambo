@@ -78,5 +78,13 @@ body {
 }
 .score {
   display: flex;
-  justify-content: space-betwee
+  justify-content: space-between
+}
+.score ul {
+  align-self: center;
+  list-style: none;
+}
+
+.score li {
+  text-align: center;
 }
