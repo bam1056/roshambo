@@ -10,7 +10,7 @@ const init = () => {
   const rock = document.querySelector('.rock')
   const paper = document.querySelector('.paper')
   const scissors = document.querySelector('.scissors')
-  const reset = document.querySelector('.reset')
+  // const reset = document.querySelector('.reset')
 
   rock.addEventListener('click', () => {
     let result = playGame('Rock')
@@ -30,11 +30,11 @@ const init = () => {
     displayResults(result)
     // checkForWinner()
   })
-  reset.addEventListener('click', () => {
-    computerEngagements = 0
-    playerEngagements = 0
-    displayResults()
-  })
+  // reset.addEventListener('click', () => {
+  //   computerEngagements = 0
+  //   playerEngagements = 0
+  //   displayResults()
+  // })
 }
 
 document.addEventListener('DOMContentLoaded', init)
@@ -52,6 +52,7 @@ const setScore = (result) => {
         computerMatches++
         displayResults(result)
         computerBouts = 0
+        // declareWinner('Computer')
       }
       break
     case 'player':
@@ -65,6 +66,7 @@ const setScore = (result) => {
         playerMatches++
         displayResults(result)
         playerBouts = 0
+        // declareWinner('Player')
       }
       break
     case 'tie': break
@@ -72,6 +74,15 @@ const setScore = (result) => {
   }
 }
 
+// const declareWinner = (winner) => {
+//   playerBouts = 0
+//   computerBouts = 0
+//   playerEngagements = 0
+//   computerEngagements = 0
+//   computerMatches = 0
+//   playerMatches = 0
+//   document.querySelector('.output').textContent = `${winner} Wins The Game!!!`
+// }
 // const checkForWinner = () => {
 
 const playGame = (playerChoice) => {
