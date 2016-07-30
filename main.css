@@ -2,6 +2,15 @@ h2 {
   position: relative;
   top: 0.5em;
 }
+h1 {
+  font-family: fantasy;
+  font-size: 5em;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+  text-shadow: 6px 7px 2px lightgray;
+  color: black;
+}
 .playerTitle {
   position: relative;
   bottom: 5em;
@@ -12,13 +21,17 @@ html {
 
 body {
   height: 100%;
-  background-color: rgb(209, 225, 232);
-  font-family: sans-serif;
+  background-color: rgb(125, 125, 125);
+  font-family: "Futura";
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-image: url('/images/bg-img-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 
 .input {
@@ -42,39 +55,50 @@ body {
 }*/
 .input button {
   margin: 2em;
-  color: transparent;
-  background-color: rgb(136, 187, 190);
+  color: transparent;;
+  font-size: 2.5em;
+  background-color: rgb(50, 50, 50);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  height: 150px;
-  width: 150px;
+  height: 300px;
+  width: 300px;
+}
+.input button:hover {
+  color: black;
 }
 
 .input button.rock {
-  background-image: url('../images/rock.png')
+  background-image: url('../images/fist.jpg')
 }
 
 .input button.scissors {
-  background-image: url('../images/scissors.png')
+  background-image: url('../images/handScissors.png')
 }
 
 .input button.paper {
-  background-image: url('../images/paper.png')
+  background-image: url('../images/judo.png')
 }
 
-.output, .pScore, .compScore {
+.output {
   margin: auto 2em;
-  font-size: 1.5em;
+  font-size: 3em;
   padding: 1em;
-  border-radius: 5px;
-  border: 2px solid rgb(41, 109, 128);
-  background-color: rgb(75, 200, 235);
+  color: white;
+}
+.output2 {
+  display: none;
+  font-size: 5em;
+  padding: 25px;
+  margin: 25px;
 }
 
-.test button.reset {
-  font-size: 1.5em;
+button.reset {
+  font-size: 3em;
   background-color: gray;
+  display: none;
+  color: white;
+  margin: 50px;
 }
 .score {
   display: flex;
@@ -87,4 +111,5 @@ body {
 
 .score li {
   text-align: center;
+  font-size: 1.5em
 }

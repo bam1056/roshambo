@@ -10,31 +10,22 @@ const init = () => {
   const rock = document.querySelector('.rock')
   const paper = document.querySelector('.paper')
   const scissors = document.querySelector('.scissors')
-  // const reset = document.querySelector('.reset')
 
   rock.addEventListener('click', () => {
     let result = playGame('Rock')
     setScore(result)
     displayResults(result)
-    // checkForWinner()
   })
   paper.addEventListener('click', () => {
     let result = playGame('Paper')
     setScore(result)
     displayResults(result)
-    // checkForWinner()
   })
   scissors.addEventListener('click', () => {
     let result = playGame('Scissors')
     setScore(result)
     displayResults(result)
-    // checkForWinner()
   })
-  // reset.addEventListener('click', () => {
-  //   computerEngagements = 0
-  //   playerEngagements = 0
-  //   displayResults()
-  // })
 }
 
 document.addEventListener('DOMContentLoaded', init)
@@ -52,7 +43,11 @@ const setScore = (result) => {
         computerMatches++
         displayResults(result)
         computerBouts = 0
-        // declareWinner('Computer')
+      }
+      if (computerMatches === 1) {
+        displayResults(result)
+        declareWinner('Computer')
+        computerMatches = 0
       }
       break
     case 'player':
@@ -66,24 +61,31 @@ const setScore = (result) => {
         playerMatches++
         displayResults(result)
         playerBouts = 0
-        // declareWinner('Player')
+      }
+      if (playerMatches === 1) {
+        displayResults(result)
+        declareWinner('Player')
+        playerMatches = 0
       }
       break
     case 'tie': break
-    default: return null
   }
 }
 
-// const declareWinner = (winner) => {
-//   playerBouts = 0
-//   computerBouts = 0
-//   playerEngagements = 0
-//   computerEngagements = 0
-//   computerMatches = 0
-//   playerMatches = 0
-//   document.querySelector('.output').textContent = `${winner} Wins The Game!!!`
-// }
-// const checkForWinner = () => {
+const declareWinner = (winner) => {
+  playerBouts = 0
+  computerBouts = 0
+  playerEngagements = 0
+  computerEngagements = 0
+  computerMatches = 0
+  playerMatches = 0
+  document.querySelector('.output2').style.display = 'block'
+  document.querySelector('.output2').textContent = `${winner} Wins The Game!!!`
+  document.querySelector('.reset').style.display = 'block'
+  document.querySelector('.rock').disabled = 'true'
+  document.querySelector('.paper').disabled = 'true'
+  document.querySelector('.scissors').disabled = 'true'
+}
 
 const playGame = (playerChoice) => {
   let compChoice = computerChoice()
@@ -129,15 +131,21 @@ const displayResults = (result) => {
   switch (result) {
     case 'computer':
       document.querySelector('.output').textContent = 'Computer Wins'
-      document.querySelector('.cEngage').textContent = `Comp Engagements = ${computerEngagements}`
-      document.querySelector('.cBout').textContent = `Bouts = ${computerBouts}`
-      document.querySelector('.cMatch').textContent = `Computer Score = ${computerMatches}`
+      document.querySelector('.cEngage').textContent = `Computer Engagements = ${computerEngagements}`
+      document.querySelector('.cBout').textContent = `Computer Bouts = ${computerBouts}`
+      document.querySelector('.cMatch').textContent = `Computer Matches = ${computerMatches}`
+      document.querySelector('.pEngage').textContent = `Player Engagements = ${playerEngagements}`
+      document.querySelector('.pBout').textContent = `Player Bouts = ${playerBouts}`
+      document.querySelector('.pMatch').textContent = `Player Matches = ${playerMatches}`
       break
     case 'player':
       document.querySelector('.output').textContent = 'Player Wins'
+      document.querySelector('.cEngage').textContent = `Computer Engagements = ${computerEngagements}`
+      document.querySelector('.cBout').textContent = `Computer Bouts = ${computerBouts}`
+      document.querySelector('.cMatch').textContent = `Computer Matches = ${computerMatches}`
       document.querySelector('.pEngage').textContent = `Player Engagements = ${playerEngagements}`
       document.querySelector('.pBout').textContent = `Player Bouts = ${playerBouts}`
-      document.querySelector('.pMatch').textContent = `Player Score = ${playerMatches}`
+      document.querySelector('.pMatch').textContent = `Player Matches = ${playerMatches}`
       break
     case 'tie':
       document.querySelector('.output').textContent = 'Its a Draw!'

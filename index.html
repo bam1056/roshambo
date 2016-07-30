@@ -7,13 +7,31 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <h1>Ro Sham Bo!</h1>
-    <!-- <div class="test">
-      <button class="reset">Reset</button>
-    </div> -->
+    <h1>Rock  Paper  Scissors</h1>
+    <div class="score">
+      <div class="pScore">
+        <ul class="allPScores">
+          <li class="pEngage">Player Engagements: 0</li>
+          <li class="pBout">Player Bouts: 0</li>
+          <li class="pMatch">Player Matches: 0</li>
+        </ul>
+      </div>
+      <div class="compScore">
+        <ul class="allCScores">
+          <li class="cEngage">Computer Engagements: 0</li>
+          <li class="cBout">Computer Bouts: 0</li>
+          <li class="cMatch">Computer Matches: 0</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <button class="reset" type="button" onclick="window.location.reload()">Click to Reset and Play Again</button>
+    </div>
     <div class="output">
     </div>
-    <h2 class="compTitle">COMPUTER</h2>
+    <div class="output2">
+    </div>
+    <!-- <h2 class="compTitle">COMPUTER</h2> -->
     <div id="compChoice" class="compChoice">
     </div>
     <div class="input">
@@ -21,22 +39,8 @@
       <button class="scissors">Scissors</button>
       <button class="paper">Paper</button>
     </div>
-    <h2 class="playerTitle">PLAYER</h2>
-    <div class="score">
-      <div class="pScore">
-        <ul class="allPScores">
-          <li class="pEngage">Engagements: 0</li>
-          <li class="pBout">Bouts: 0</li>
-          <li class="pMatch">Match: 0</li>
-        </ul>
-      </div>
-      <div class="compScore">
-        <ul class="allCScores">
-          <li class="cEngage">Engagements: 0</li>
-          <li class="cBout">Bouts: 0</li>
-          <li class="cMatch">Match: 0</li>
-        </ul>
-      </div>
-    </div>
+    <!-- <h2 class="playerTitle">PLAYER</h2> -->
+
+
   </body>
 </html>
