@@ -65,11 +65,13 @@ body {
   width: 300px;
 }
 .input button:hover {
-  color: black;
+  color: white;
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
 .input button.rock {
-  background-image: url('../images/fist.jpg')
+  background-image: url('../images/handRock.png')
 }
 
 .input button.scissors {
@@ -112,4 +114,9 @@ button.reset {
 .score li {
   text-align: center;
   font-size: 1.5em
+}
+
+.compChoice {
+  height: 300px;
+  width: 300px;
 }
